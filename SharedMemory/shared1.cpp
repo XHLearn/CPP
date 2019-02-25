@@ -1,3 +1,10 @@
+/*
+ * @Description: 两个进程通过映射普通文件实现共享内存通信
+ * @Author: lamborghini1993
+ * @Date: 2019-02-22 20:29:50
+ * @UpdateDate: 2019-02-25 10:34:18
+ */
+
 #include <sys/mman.h>
 #include <sys/types.h>
 #include <fcntl.h>
