@@ -1,7 +1,7 @@
 /*
  * @Author: lamborghini1993
  * @Date: 2019-02-21 16:33:27
- * @UpdateDate: 2019-02-21 17:12:47
+ * @UpdateDate: 2019-02-27 11:13:45
  * @Description: STL相关
  * stack
  * queue
@@ -9,6 +9,7 @@
  * set
  * map
  * list
+ * priority_queue 优先队列
  */
 
 #include <iostream>
@@ -118,8 +119,63 @@ void Map()
     m.clear();
 }
 
+class ProrityQueue // 优先队列
+{
+    struct node
+    {
+        int x;
+        friend bool operator<(const node &a, const node &b)
+        {
+            return a.x > b.x;
+        }
+    };
+
+    struct cmp
+    {
+        bool operator()(int x, int y)
+        {
+            return x > y;
+        }
+    };
+
+  public:
+    void Test1(int xh[], int n)
+    {
+        priority_queue<int, vector<int>, cmp> q;
+        for (int i = 0; i < n; i++)
+        {
+            q.push(xh[i]);
+        }
+        while (!q.empty())
+        {
+            printf("%d ", q.top());
+            q.pop();
+        }
+        printf("\n");
+    }
+
+    void Test2(int xh[], int n)
+    {
+        priority_queue<node> q;
+        for (int i = 0; i < n; i++)
+        {
+            node a;
+            a.x = xh[i];
+            q.push(a);
+        }
+        while (!q.empty())
+        {
+            printf("%d ", q.top().x);
+            q.pop();
+        }
+        printf("\n");
+    }
+};
+
 int main()
 {
-    SetCmp();
+    int xh[] = {3, 2, 3, 1, 2, 4, 5, 5, 6};
+    int n = sizeof(xh) / sizeof(xh[0]);
+    ProrityQueue().Test2(xh, n);
     return 0;
 }
