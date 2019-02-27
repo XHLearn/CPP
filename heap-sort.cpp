@@ -2,16 +2,16 @@
  * @Description: 堆排序
  * @Author: lamborghini1993
  * @Date: 2019-02-26 11:24:12
- * @UpdateDate: 2019-02-26 15:26:52
+ * @UpdateDate: 2019-02-27 10:54:43
  */
 
 #include <iostream>
 #include <stdio.h>
 using namespace std;
 
-void HeapAjust1(int xh[], int k, int n)
+void HeapAjust1(int xh[], int root, int n)
 {
-    int lchild = k * 2 + 1;
+    int lchild = root * 2 + 1;
     if (lchild >= n)
         return;
     int rchild = lchild + 1;
@@ -20,16 +20,16 @@ void HeapAjust1(int xh[], int k, int n)
     {
         maxChild = rchild;
     }
-    if (xh[maxChild] > xh[k])
+    if (xh[maxChild] > xh[root])
     {
-        swap(xh[maxChild], xh[k]);
+        swap(xh[maxChild], xh[root]);
         HeapAjust1(xh, maxChild, n);
     }
 }
 
-void HeapAjust2(int xh[], int k, int n)
+void HeapAjust2(int xh[], int root, int n)
 {
-    int lchild = k * 2 + 1;
+    int lchild = root * 2 + 1;
     int rchild, maxChild;
     while (lchild < n)
     {
@@ -39,10 +39,11 @@ void HeapAjust2(int xh[], int k, int n)
         {
             maxChild = rchild;
         }
-        if (xh[maxChild] > xh[k])
+        if (xh[maxChild] > xh[root])
         {
-            swap(xh[maxChild], xh[k]);
+            swap(xh[maxChild], xh[root]);
         }
+        root = maxChild;
         lchild = maxChild * 2 + 1;
     }
 }
@@ -66,7 +67,8 @@ void HeapSort(int xh[], int n)
 
 int main()
 {
-    int xh[] = {8, 4, 5, 7, 1, 3, 6, 2, -1};
+    // int xh[] = {8, 4, 5, 7, 1, 3, 6, 2, -1};
+    int xh[] = {3, 2, 3, 1, 2, 4, 5, 5, 6};
     int n = sizeof(xh) / sizeof(xh[0]);
     HeapSort(xh, n);
     for (int i = 0; i < n; i++)
