@@ -1,5 +1,5 @@
-/*
- * @Description: 内存管理
+﻿/*
+ * @Description: 内存管理相关
  * @Author: lamborghini1993
  * @Date: 2019-03-14 20:35:43
  * @UpdateDate: 2019-03-14 20:36:34
